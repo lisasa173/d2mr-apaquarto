@@ -64,7 +64,7 @@ language:
   title-block-correspondence-note: "Correspondence concerning this article should be addressed to"
   title-block-role-introduction: "Author roles were classified using the Contributor Role Taxonomy (CRediT; https://credit.niso.org/) as follows:"
   title-impact-statement: "Impact Statement"
-  references-meta-analysis: "References marked with an asterisk indicate studies included in the meta-analysis."
+  references-meta-analysis: "References marked with an asterisk indicate studies included in the meta-analysis." #I did not include this#
 format:
   apaquarto-docx: default
   apaquarto-html: default
