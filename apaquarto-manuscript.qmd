@@ -60,19 +60,11 @@ language:
   citation-masked-date: "n.d."
   citation-masked-title: "Masked Title"
   email: "Email"
-<<<<<<< HEAD
   title-block-author-note: "Author Note"
   title-block-correspondence-note: "Correspondence concerning this article should be addressed to"
   title-block-role-introduction: "Author roles were classified using the Contributor Role Taxonomy (CRediT; https://credit.niso.org/) as follows:"
   title-impact-statement: "Impact Statement"
   references-meta-analysis: "References marked with an asterisk indicate studies included in the meta-analysis." #I did not include this#
-=======
-#  title-block-author-note: "Author Note"
-#  title-block-correspondence-note: "Correspondence concerning this article should be addressed to"
-#  title-block-role-introduction: "Author roles were classified using the Contributor Role Taxonomy (CRediT; https://credit.niso.org/) as follows:"
-#  title-impact-statement: "Impact Statement"
-  references-meta-analysis: "References marked with an asterisk indicate studies included in the meta-analysis."
->>>>>>> 4173ed39c1efc7653c6ae2f737a61e2f20ee0683
 format:
   apaquarto-html: default
   apaquarto-docx: default

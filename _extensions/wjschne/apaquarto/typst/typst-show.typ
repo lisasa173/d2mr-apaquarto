@@ -35,8 +35,5 @@ $endif$
 $if(cols)$
   cols: $cols$,
 $endif$
-$if(toc)$
-  toc: "true",
-$endif$
   document,
 )

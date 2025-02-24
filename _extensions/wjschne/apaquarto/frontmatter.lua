@@ -325,7 +325,7 @@ return {
           pp = pandoc.Para(pandoc.Str(""))
           pp.content:extend(a.apaauthordisplay)
           pp.content:extend({pandoc.Space(), img})
-          pp.content:extend({pandoc.Space(), pandoc.Str("https://orcid.org/")})
+          pp.content:extend({pandoc.Space(), pandoc.Str("http://orcid.org/")})
           pp.content:extend(a.orcid)
           
           if not mask and not meta["suppress-orcid"] and authornote then
@@ -577,24 +577,6 @@ return {
 
       end
       
-      if meta["impact-statement"] and #meta["impact-statement"] > 0 and not meta["supress-impact-statement"] then
-        local impactheadertext = pandoc.Str("Impact Statement")
-        if meta.language and meta.language["title-impact-statement"] then
-          impactheadertext = meta.language["title-impact-statement"]
-        end
-        local impactheader = pandoc.Header(1, impactheadertext)
-        impactheader.classes = {"unnumbered", "unlisted", "AuthorNote"}
-        impactheader.identifier = "impact"
-        body:extend({impactheader})
-        local impact_paragraph = pandoc.Para(pandoc.Str(""))
-        if pandoc.utils.type(meta["impact-statement"]) == "Inlines" then
-          impact_paragraph.content:extend(meta["impact-statement"])
-          local impactdiv = pandoc.Div(impact_paragraph)
-          impactdiv.classes:insert("AbstractFirstParagraph")
-          body:extend({impactdiv})
-        end
-      end
-      
       if meta.keywords and not meta["suppress-keywords"] then
         local keywordsword = pandoc.Str("Keywords")
         if meta.language and meta.language["title-block-keywords"] then
@@ -651,23 +633,6 @@ return {
       if meta["suppress-title-page"] then
         body = List:new{}
       end
-      
-      print(PANDOC_WRITER_OPTIONS["table_of_contents"])
-      
-      if FORMAT:match 'typst' and PANDOC_WRITER_OPTIONS["table_of_contents"] then
-        body:extend({pandoc.RawBlock('typst', '\n\n#outline(title: [Table of Contents], indent: 1.5em)\n\n')})
-        body:extend({pandoc.RawBlock('typst', '#pagebreak()\n\n')})
-      end
-      
-      if FORMAT:match 'typst' and meta["list-of-figures"] then
-        body:extend({pandoc.RawBlock('typst', '\n\n#outline(title: [List of Figures], target: figure.where(kind: "quarto-float-fig"),)\n\n')})
-        body:extend({pandoc.RawBlock('typst', '#pagebreak()\n\n')})
-      end
-      
-      if FORMAT:match 'typst' and meta["list-of-tables"] then
-        body:extend({pandoc.RawBlock('typst', '\n\n#outline(title: [List of Tables], target: figure.where(kind: "quarto-float-tbl"),)\n\n')})
-        body:extend({pandoc.RawBlock('typst', '#pagebreak()\n\n')})
-      end
 
       if meta.apatitledisplay and not meta["suppress-title-introduction"] then
         local firstpageheader = documenttitle:clone()
@@ -675,9 +640,6 @@ return {
         firstpageheader.classes = {"title", "unnumbered", "unlisted"}
         body:extend({firstpageheader})
       end
-
-      
-
       
       body:extend(doc.blocks)
       return pandoc.Pandoc(body, meta)
